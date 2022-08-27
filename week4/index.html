@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>week 4</title>
+    <link rel="stylesheet" href="leaflet.css" />
+    <script src="leaflet.js"></script>
+    <style>
+        body {
+        padding: 0;
+        margin: 0;
+        }
+        html, body, #map {
+        height: 100%;
+        width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        let map = L.map("map", {center: [-1.0953, 37.0150], zoom: 17});
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", 
+            {attribution: '&copy; <a href="http://' + 
+            'www.openstreetmap.org/copyright">OpenStreetMap</a>'}
+        ).addTo(map);
+
+        /*markers*/
+        let oldLibrary = L.marker([-1.1806, 36.9344]).addTo(map); emb.bindPopup("EMB");
+        let graduationField = L.marker([-1.1779, 36.9332]).addTo(map); assemblyHall.bindPopup("Assembly Hall");
+        let soccer = L.marker([ -1.1808, 36.9317]).addTo(map); scc.bindPopup("SCC");
+        let KUPostModernLibrary = L.marker([-1.1781, 36.9361]).addTo(map); gradSquare.bindPopup("Graduation Square");
+        let CentralAdmin = L.marker([-1.1795, 36.9363]).addTo(map); adm1.bindPopup("Jkuat Admin Block 1");
+
+        let h1 = L.marker([-1.1806, 36.9344]).addTo(map); h1.bindPopup("H1");
+        let h2 = L.marker([-1.1779, 36.9332]).addTo(map); h2.bindPopup("H2");
+        let h3 = L.marker([-1.1808, 36.9317]).addTo(map); h3.bindPopup("H3");
+        let h4 = L.marker([-1.1781, 36.9361]).addTo(map); h4.bindPopup("H4");
+        
+
+
+
+        L.circleMarker([-1.1806, 36.9344],{radius: 40, color: "blue", fillColor: "yellow"}).addTo(map);
+        L.circleMarker([-1.1779, 36.9332],{radius: 40, color: "black", fillColor: ""}).addTo(map);
+        L.circleMarker([-1.1808, 36.9317],{radius: 50, color: "blue", fillColor: "yellow"}).addTo(map);
+       
+        
+        
+        let popup = L.popup();
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent(
+                    "<b>Lon:</b> " + e.latlng.lng + "<br>" + 
+                    "<b>Lat:</b> " + e.latlng.lat
+                )
+                .openOn(map);
+        }
+        map.addEventListener("click", onMapClick);
+    </script>
+</body>
+</html>
